@@ -17,15 +17,15 @@ from acapy_agent.wallet.util import b58_to_bytes, b64_to_bytes, bytes_to_b58
 from aiohttp.web import HTTPBadRequest
 from aries_askar import Key, KeyAlg
 from cryptography.hazmat.primitives.serialization import Encoding
-from x509_certs import X509CertificateRecord
-from x509_certs.certs import describe, to_x5c
-from x509_certs.tests.conftest import NOW, Pki, wallet_public_key
+from x509_certs.v1_0 import X509CertificateRecord
+from x509_certs.v1_0.certs import describe, to_x5c
 
 from .. import status_handler
 from ..controllers import status_list_def as def_controller
 from ..controllers import status_list_pub as pub_controller
 from ..error import StatusListError
 from ..models import StatusListDef
+from .pki import NOW, Pki, wallet_public_key
 
 ISSUER_ID = "https://issuer.example.com"
 CWT = "application/statuslist+cwt"

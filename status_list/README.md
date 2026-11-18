@@ -90,7 +90,7 @@ Status list tokens are signed when a definition is published and when the OID4VC
 | `issuer_did`, `verification_method` | The DID's key | `kid` | `issuer_did` |
 | `signing_multikey`, optional `issuer_id` | The wallet key with that multikey | `x5c` (JWT), `x5chain` (CWT) | `issuer_id`, or left out |
 
-With `signing_multikey`, the certificate chain comes from the `x509_certs` plugin, which ships with the OID4VC plugin: the key's `sd_jwt_vc_issuer` certificate that is valid from now until the token expires. IETF and W3C tokens expire 365 days after signing, so the certificate must stay valid at least that long. If no certificate qualifies, signing fails and publishing returns 400. W3C lists also need `issuer_id`, which becomes the list credential's `issuer`.
+With `signing_multikey`, the certificate chain comes from the standalone `x509_certs.v1_0` plugin: the key's `sd_jwt_vc_issuer` certificate that is valid from now until the token expires. Install and load the `x509_certs` plugin alongside `status_list`. IETF and W3C tokens expire 365 days after signing, so the certificate must stay valid at least that long. If no certificate qualifies, signing fails and publishing returns 400. W3C lists also need `issuer_id`, which becomes the list credential's `issuer`.
 
 The Token Status List draft (Section 11.3) recommends that an issuer signing both its credentials and their status list use the same key or certificate for both. The plugin does not check this; set `signing_multikey` to the key the credentials are signed with.
 

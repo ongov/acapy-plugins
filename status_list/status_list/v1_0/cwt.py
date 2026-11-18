@@ -50,7 +50,7 @@ _SL_BITS = 0
 _SL_LST = 1
 
 # "typ" value for status list CWT
-STATUSLIST_CWT_TYP = "statuslist+cwt"
+STATUSLIST_CWT_TYP = "application/statuslist+cwt"
 
 # CBOR tag for COSE_Sign1 (RFC 9052 §4.2)
 _COSE_SIGN1_TAG = 18

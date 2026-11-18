@@ -7,7 +7,6 @@ from acapy_agent.admin.request_context import AdminRequestContext
 
 from .. import status_handler
 from ..cwt import (
-    STATUSLIST_CWT_TYP,
     cwt_sign,
     to_cwt_claims,
 )
@@ -105,7 +104,7 @@ async def test_cwt_sign_structure(context: AdminRequestContext):
 
     protected = cbor2.loads(protected_bstr)
     assert protected[_HEADER_ALG] == _ALG_EDDSA
-    assert protected[_HEADER_TYP] == STATUSLIST_CWT_TYP
+    assert protected[_HEADER_TYP] == "application/statuslist+cwt"
     assert protected[_HEADER_KID] == verification_method
 
     claims = cbor2.loads(payload_bstr)

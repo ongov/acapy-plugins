@@ -505,9 +505,8 @@ def _expires_at(status_list: dict) -> datetime:
 
 async def _issuer_x5c(profile: Profile, multikey: str, expires_at: datetime) -> List[str]:
     """x5c of the issuer certificate covering the status list's validity."""
-    # x509_certs ships with the oid4vc plugin; status_list does not depend on it.
     try:
-        from x509_certs import X509Error, embedded_x5c, select_certificate
+        from x509_certs.v1_0 import X509Error, embedded_x5c, select_certificate
     except ImportError as err:
         raise StatusListError("signing_multikey requires the x509_certs plugin") from err
 
